@@ -1,8 +1,12 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+from pathlib import Path
 
-df=pd.read_csv("equations.csv")
+BASE_DIR = Path(__file__).resolve().parent
+CSV_FILE = BASE_DIR / "data" / "processed" / "equations.csv"
+
+df=pd.read_csv(CSV_FILE)
 df.equation=df.equation.astype('int')
 a,b,c,d,e,f,g,h,i,j,k,l=df['equation'][0],df['equation'][1],df['equation'][2],df['equation'][3],df['equation'][4],df['equation'][5],df['equation'][6],df['equation'][7],df['equation'][8],df['equation'][9],df['equation'][10],df['equation'][11]
 slope = [-a/b, -d/e, -g/h, -j/k]

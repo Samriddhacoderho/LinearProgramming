@@ -4,11 +4,21 @@
 // Roll:24063
 
 #include <stdio.h>
+#include <stdlib.h>
 
 void main()
 {
+    const char *output_path = "data/raw/lppoutput.txt";
+
+#ifdef _WIN32
+    system("mkdir data >nul 2>&1");
+    system("mkdir data\\raw >nul 2>&1");
+#else
+    system("mkdir -p data/raw");
+#endif
+
     // Open a file in write mode
-    FILE *file = fopen("C:\\Users\\WindowsSRS\\OneDrive\\Desktop\\linear programming c\\lppoutput.txt", "w");
+    FILE *file = fopen(output_path, "w");
 
     // Check if file opened successfully
     if (file == NULL) {
